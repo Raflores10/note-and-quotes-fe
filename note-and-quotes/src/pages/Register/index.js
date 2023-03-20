@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Container from'react-bootstrap/Container'
 import { Link } from "react-router-dom"
-
+import "./style.css"; // import the CSS file
 
 function Register(props) {
     const [email, setEmail] = useState('');
