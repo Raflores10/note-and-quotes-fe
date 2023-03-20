@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Container from'react-bootstrap/Container'
+import { Link } from "react-router-dom"
 
 
 function Register(props) {
@@ -29,17 +30,19 @@ function Register(props) {
     }
     return (
         <Container className='auth-form-container d-flex justify-content-center align-items-center'>
-        <div className='auth-form-container'>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor='username'>Username</label>
-            <input value={username} onChange={(e) => setUsername(e.target.value)} type='username' placeholder='' id="username" name='username' />
-            <label htmlFor='email'>Email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type='email' placeholder='youremail@gmail.com' id="email" name='email' />
-            <label htmlFor='password'>Password</label>
-            <input value={password} onChange={(e) => setPassword(e.target.value)} type='password' placeholder='********' id='password' name='password' />
-            <button type='submit'>Register</button>
-        </form>
-        </div>
+            <div className='auth-form-container'>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor='username'>Username</label>
+                    <input value={username} onChange={(e) => setUsername(e.target.value)} type='username' placeholder='' id="username" name='username' />
+                    <label htmlFor='email'>Email</label>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type='email' placeholder='youremail@gmail.com' id="email" name='email' />
+                    <label htmlFor='password'>Password</label>
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type='password' placeholder='********' id='password' name='password' />
+                    <Link to="http://localhost:3001/api/spotify/login">
+                        <button>Register</button>
+                    </Link>
+                </form>
+            </div>
         </Container>
     )
 }

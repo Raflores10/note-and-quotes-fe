@@ -5,7 +5,7 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Login from "./pages/Login"
 import Register from "./pages/Register";
-import React, {useState} from 'react';
+// import React, {useState} from 'react';
 
 
 function App() {
