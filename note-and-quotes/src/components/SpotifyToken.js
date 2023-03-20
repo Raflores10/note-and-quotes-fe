@@ -1,15 +1,17 @@
 import axios from 'axios';
 
-// export const getHashParams = () => {
-//     const hashParams = {};
-//     let e;
-//     const r = /([^&;=]+)=?([^&;]*)/g;
-//     const q = window.location.hash.substring(1);
-//     while ((e = r.exec(q))) {
-//       hashParams[e[1]] = decodeURIComponent(e[2]);
-//     }
-//     return hashParams;
-//   };
+export const getHashParams = () => {
+    const hashParams = {};
+    let e;
+    const r = /([^&;=]+)=?([^&;]*)/g;
+    const q = window.location.hash.substring(1);
+    while ((e = r.exec(q))) {
+      hashParams[e[1]] = decodeURIComponent(e[2]);
+    }
+    return hashParams;
+  };
+
+  
 
 const setLocalAccessToken = token => {
   window.localStorage.setItem('spotify_access_token', token);
@@ -52,7 +54,7 @@ export const getAccessToken = () => {
   return localAccessToken;
 };
 
-export const token = getAccessToken();
+export const token = getAccessToken()
 
 export const logout = () => {
   window.localStorage.removeItem('spotify_token_timestamp');
