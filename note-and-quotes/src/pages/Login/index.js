@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/esm/Container';
-import {Navigate, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Login = (props) => {
     const navigate = useNavigate();
-    const [users, setUsers] = useState([]);
+    const [setUsers] = useState([]);
     const [token, setToken] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/users', {
+        fetch('https://kjr-notes-and-quotes.herokuapp.com/api/users', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -27,7 +27,7 @@ const Login = (props) => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            fetch('http://localhost:3001/api/users/login', {
+            fetch('https://kjr-notes-and-quotes.herokuapp.com/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

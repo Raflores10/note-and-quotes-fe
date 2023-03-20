@@ -9,7 +9,7 @@ function Register(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/api/users/register', {
+        fetch('https://kjr-notes-and-quotes.herokuapp.com/api/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
