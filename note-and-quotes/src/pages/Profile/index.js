@@ -1,13 +1,39 @@
-import React from 'react'
 import Card from 'react-bootstrap/Card'
+import React from "react"
+// import queryString from "query-string"
 
 
+  export default function Profile() {
+  
 
+    
+    
+          // let parsed = queryString.parse(window.location.search);
+          // let accessToken = parsed.access_token;
+          // if (!accessToken)
+          //   return;
 
-export default function Profile() {
-  return (
-    <div>
-      <div className="infoCard">
+          //   fetch('https://api.spotify.com/v1/me/player/recently-played', {
+          //     headers: {'Authorization': 'Bearer ' + accessToken}
+          //   }).then(response => response.json())
+          //       .then(data => useState({
+          //         user: {
+          //           items: data.track.name
+          //     },
+          //   }))
+            
+
+          // fetch('https://api.spotify.com/v1/me', {
+          //   headers: {'Authorization': 'Bearer ' + accessToken}
+          // }).then(response => response.json())
+          // .then(data => console.log(data))
+
+        
+        
+          
+      return (
+      <div>
+        <div className="infoCard">
       <Card style={{ width: '18rem', height:'25rem' }}>
       <Card.Body>
         <Card.Title>Username</Card.Title>
@@ -21,5 +47,7 @@ export default function Profile() {
     </Card>
       </div>
     </div>
-  )
-}
+    )
+  }
+
+  
