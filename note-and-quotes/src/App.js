@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login"
 import Register from "./pages/Register";
 import React, {useState} from 'react';
+import Logout from "./pages/Logout";
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
         <Route path="/profile/" element={<Profile/>}/>
         <Route path="/login/" element={<Login/>}/>
         <Route path="/register/" element={<Register/>}/>
-        <Route />
+        <Route path="/logout/" element={<Logout/>}/>
         <Route />
 
         <Route />
