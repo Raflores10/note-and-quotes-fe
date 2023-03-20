@@ -21,6 +21,7 @@ const Login = (props) => {
           .catch(error => console.error(error));
       }, [token]);
 
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -29,19 +30,21 @@ const Login = (props) => {
             fetch('http://localhost:3001/api/users/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     username: username,
-                    password: password
+                    password: password,
                 })
             })
             .then(response => response.json())
-            .then(data => {
-                if (data.token) {
+            .then(response => {
+                console.log(username)
+                console.log(password)
+                if (response.token) {
                     // authentication successful, store the token in local storage
-                    localStorage.setItem('token', data.token);
-                    setToken(data.token);
+                    localStorage.setItem("token", response.token);
+                    setToken(response.token);
                 } else {
                     // authentication failed, show an error message
                     console.log('Invalid login credentials');
