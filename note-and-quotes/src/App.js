@@ -5,7 +5,9 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Login from "./pages/Login"
 import Register from "./pages/Register";
-// import React, {useState} from 'react';
+import React, {useState} from 'react';
+import Logout from "./pages/Logout";
+
 
 
 function App() {
@@ -21,11 +23,8 @@ function App() {
         <Route path="/home/" element={<Home/>}/>
         <Route path="/login/" element={<Login/>}/>
         <Route path="/register/" element={<Register/>}/>
+        <Route path="/logout/" element={<Logout/>}/>
 
-        <Route />
-        <Route />
-
-        <Route />
 
       </Routes>
     </BrowserRouter>
