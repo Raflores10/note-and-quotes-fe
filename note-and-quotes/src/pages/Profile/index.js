@@ -1,69 +1,30 @@
-import Card from 'react-bootstrap/Card'
-import React, {useState , useEffect} from "react"
-import { getUser, accessToken } from '../../components/SpotifyFetch'
-import { token } from "../../components/SpotifyToken"
-import Cors from "cors"
+import Card from 'react-bootstrap/Card';
+import { getUserProfile } from "../../components/SpotifyToken";
+import React, {useEffect , useState} from "react";
+import { accessToken } from "../../components/SpotifyToken"
 
-// import queryString from "query-string"
-
-
-export default function Profile () {
+const Profile = () => {
 
   const [token, setToken] = useState(null);
-  const [spotifyProfile, setSpotifyProfile] = useState();
+  const [profile, setProfile] = useState(null);
 
-  // useEffect() => {
-  //   setToken(accessToken);
+  useEffect(() => {
+    setToken(accessToken);
 
-    fetch('https://api.spotify.com/v1/me/player/recently-played', {
-          headers: {'Authorization': 'Bearer ' + accessToken}
-        }).then(data => console.log(data))
-        // .then(data => useState({
-        //   user: {
-        //     track: data.track
-        //   },
-        // }))
-      
-   
-        
+    const fetchData = async () => {
+      try {
+        const { data } = await getUserProfile();
+        setProfile(data);
+      } catch(e) {
+        console.error(e);
+      }
+    };
 
+    fetchData();
+  }, []);
 
-
-
-      
-  
-
-
-  
-
-  
-
-    
-    
-          // let parsed = queryString.parse(window.location.search);
-          // let accessToken = parsed.access_token;
-          // if (!accessToken)
-          //   return;
-
-          //   fetch('https://api.spotify.com/v1/me/player/recently-played', {
-          //     headers: {'Authorization': 'Bearer ' + accessToken}
-          //   }).then(response => response.json())
-          //       .then(data => useState({
-          //         user: {
-          //           items: data.track.name
-          //     },
-          //   }))
-            
-
-          // fetch('https://api.spotify.com/v1/me', {
-          //   headers: {'Authorization': 'Bearer ' + accessToken}
-          // }).then(response => response.json())
-          // .then(data => console.log(data))
-
-        
-        
-          
-    return (
+       
+  return (
       <div>
         <div className="infoCard">
       <Card style={{ width: '18rem', height:'25rem' }}>
@@ -81,3 +42,5 @@ export default function Profile () {
     </div>
     )
   }
+
+export default Profile
