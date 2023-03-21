@@ -1,74 +1,60 @@
-import Card from 'react-bootstrap/Card'
-import React, {useState , useEffect} from "react"
-import { getUser, accessToken } from '../../components/SpotifyFetch'
-import { token } from "../../components/SpotifyToken"
-import Cors from "cors"
 
-// import queryString from "query-string"
+import Login from '../Login';
+import Register from '../Register';
+import Card from 'react-bootstrap/Card';
+import { getUserProfile } from "../../components/SpotifyToken";
+import React, {useEffect , useState} from "react";
+import { accessToken } from "../../components/SpotifyToken"
 
 
-export default function Profile () {
+const Profile = () => {
 
   const [token, setToken] = useState(null);
-  const [spotifyProfile, setSpotifyProfile] = useState();
+  const [profile, setProfile] = useState(null);
 
-  // useEffect() => {
-  //   setToken(accessToken);
+  useEffect(() => {
+    setToken(accessToken);
 
-    fetch('https://api.spotify.com/v1/me/player/recently-played', {
-          headers: {'Authorization': 'Bearer ' + accessToken}
-        }).then(data => console.log(data))
-        // .then(data => useState({
-        //   user: {
-        //     track: data.track
-        //   },
-        // }))
-      
-   
-        
+export default function Profile(props) {
+    const [username, setUsername] = useState('');
+    const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
+    const [Id, setId] = useState('');
+    const user2 = props.location?.state?.user;
 
+    useEffect(() => {
+      // Make a fetch request to your database to retrieve the user's username
+      fetch(`https://kjr-notes-and-quotes.herokuapp.com//api/users/${Id}`)
 
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data.user);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, [userId]);
 
+    const fetchData = async () => {
+      try {
+        const { data } = await getUserProfile();
+        setProfile(data);
+      } catch(e) {
+        console.error(e);
+      }
+    };
 
-      
-  
+    fetchData();
+  }, []);
 
+       
 
-  
-
-  
-
-    
-    
-          // let parsed = queryString.parse(window.location.search);
-          // let accessToken = parsed.access_token;
-          // if (!accessToken)
-          //   return;
-
-          //   fetch('https://api.spotify.com/v1/me/player/recently-played', {
-          //     headers: {'Authorization': 'Bearer ' + accessToken}
-          //   }).then(response => response.json())
-          //       .then(data => useState({
-          //         user: {
-          //           items: data.track.name
-          //     },
-          //   }))
-            
-
-          // fetch('https://api.spotify.com/v1/me', {
-          //   headers: {'Authorization': 'Bearer ' + accessToken}
-          // }).then(response => response.json())
-          // .then(data => console.log(data))
-
-        
-        
-          
-    return (
+  return (
       <div>
         <div className="infoCard">
       <Card style={{ width: '18rem', height:'25rem' }}>
       <Card.Body>
-        <Card.Title>Username</Card.Title>
+        <Card.Title>Hello {user2 && user2.username}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted"> spotify photo input?</Card.Subtitle>
         <Card.Text>
           Bio
@@ -81,3 +67,5 @@ export default function Profile () {
     </div>
     )
   }
+
+export default Profile
