@@ -1,9 +1,17 @@
-import React, {useState, useEffect} from 'react'
-import Card from 'react-bootstrap/Card'
-import Login from '../Login';
-import Register from '../Register';
+
+import Card from 'react-bootstrap/Card';
+import { getUserProfile } from "../../components/SpotifyToken";
+import React, {useEffect , useState} from "react";
+import { accessToken } from "../../components/SpotifyToken"
 
 
+const Profile = () => {
+
+  const [token, setToken] = useState(null);
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    setToken(accessToken);
 
 
 export default function Profile(props) {
@@ -24,9 +32,24 @@ export default function Profile(props) {
           console.error(error);
         });
     }, [userId]);
+
+    const fetchData = async () => {
+      try {
+        const { data } = await getUserProfile();
+        setProfile(data);
+      } catch(e) {
+        console.error(e);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+       
+
   return (
-    <div>
-      <div className="infoCard">
+      <div>
+        <div className="infoCard">
       <Card style={{ width: '18rem', height:'25rem' }}>
       <Card.Body>
         <Card.Title>Hello {user2 && user2.username}</Card.Title>
@@ -40,5 +63,7 @@ export default function Profile(props) {
     </Card>
       </div>
     </div>
-  )
-}
+    )
+  }
+
+export default Profile
