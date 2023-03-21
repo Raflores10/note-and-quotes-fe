@@ -1,12 +1,23 @@
-import { Link } from 'react-router-dom';
 
-function Home() {
+import Card from 'react-bootstrap/Card'
+import React from "react"
+
+
+export default function Home() {
   return (
     <div>
-      <h1>Welcome to the homepage!</h1>
-      <Link to="/login">Log in</Link>
+        <div className="infoCard">
+      <Card style={{ width: '18rem', height:'25rem' }}>
+      <Card.Body>
+        <Card.Title>Hello Username!</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted"> spotify photo input?</Card.Subtitle>
+        <Card.Text>
+                top artists?
+        </Card.Text>
+        
+      </Card.Body>
+    </Card>
+      </div>
     </div>
-  );
+  )
 }
-
-export default Home;
