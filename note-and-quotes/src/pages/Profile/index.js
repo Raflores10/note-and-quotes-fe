@@ -1,11 +1,11 @@
 
 import Login from '../Login';
 import Register from '../Register';
-
 import Card from 'react-bootstrap/Card';
 import { getUserProfile } from "../../components/SpotifyToken";
 import React, {useEffect , useState} from "react";
 import { accessToken } from "../../components/SpotifyToken"
+
 
 const Profile = () => {
 
@@ -25,6 +25,7 @@ export default function Profile(props) {
     useEffect(() => {
       // Make a fetch request to your database to retrieve the user's username
       fetch(`https://kjr-notes-and-quotes.herokuapp.com//api/users/${Id}`)
+
         .then((res) => res.json())
         .then((data) => {
           setUser(data.user);
@@ -47,6 +48,7 @@ export default function Profile(props) {
   }, []);
 
        
+
   return (
       <div>
         <div className="infoCard">
