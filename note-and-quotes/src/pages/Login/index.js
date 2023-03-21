@@ -30,7 +30,7 @@ const Login = (props) => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            fetch('http://localhost:3001/api/users/login', {
+            fetch('https://kjr-notes-and-quotes.herokuapp.com/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
