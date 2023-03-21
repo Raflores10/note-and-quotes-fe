@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/esm/Container';
+
 import {Navigate, useNavigate} from 'react-router-dom';
 import './style.css';
+
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -46,6 +48,7 @@ const Login = (props) => {
                     // authentication successful, store the token in local storage
                     localStorage.setItem("token", response.token);
                     setToken(response.token);
+                    navigate('/')
                 } else {
                     // authentication failed, show an error message
                     console.log('Invalid login credentials');
