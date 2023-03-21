@@ -4,11 +4,11 @@ import {useNavigate} from 'react-router-dom';
 
 const Login = (props) => {
     const navigate = useNavigate();
-    const [setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
     const [token, setToken] = useState('');
 
     useEffect(() => {
-        fetch('https://kjr-notes-and-quotes.herokuapp.com/api/users', {
+        fetch('http://localhost:3001/api/users', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -27,7 +27,7 @@ const Login = (props) => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            fetch('https://kjr-notes-and-quotes.herokuapp.com/api/users/login', {
+            fetch('http://localhost:3001/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,6 +45,7 @@ const Login = (props) => {
                     // authentication successful, store the token in local storage
                     localStorage.setItem("token", response.token);
                     setToken(response.token);
+                    navigate('/')
                 } else {
                     // authentication failed, show an error message
                     console.log('Invalid login credentials');
