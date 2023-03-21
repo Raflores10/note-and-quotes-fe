@@ -15,7 +15,7 @@ export default function Profile(props) {
 
     useEffect(() => {
       // Make a fetch request to your database to retrieve the user's username
-      fetch(`http://localhost:3001/api/users/${Id}`)
+      fetch(`https://kjr-notes-and-quotes.herokuapp.com//api/users/${Id}`)
         .then((res) => res.json())
         .then((data) => {
           setUser(data.user);
